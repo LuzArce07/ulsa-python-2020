@@ -1,3 +1,6 @@
+from User import User
+import csv
+
 print("Hello World")
 
 name = 'Nombre'
@@ -22,20 +25,17 @@ print(vector1[3])
 movies = ["the warrios", "amores perros", "the simpson", "balto", "soy leyenda", "toy story"]
 
 for m in movies:
-    m = m + "(clasificación: hola)"
+    m = m + "(clasificación: B-15)"
     print(m)
 
-class User:
-    def __init__(self, name, age, email):
-        self.name = name
-        self.age = age
-        self.email = email
-    
-    #def getInfo(self):
-        #print(f'Nombre: {self.name}, Edad: {self.age}, correo: {self.email}')
+
+#Las funciones no necesitan self en su argumento
+def showName():
+    print('Nombre perron: Luz')
 
 user1 = User("Usuario", 22, "algo@gmail.com")
 print(user1.name)
-#user1.getInfo(self)
+user1.getInfo()
 
+showName()
 
