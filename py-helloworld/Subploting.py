@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+from sklearn import linear_model
 
 
 rawData = pd.read_csv('StudentsPerformance.csv')
@@ -205,15 +206,34 @@ plt.subplot(3, 3, 6)
 
 plt.title('relacion entre el score de matematicas y lectura')
 
-plt.scatter(rawData['math score'], rawData['reading score'], color = 'r')
-plt.legend(['pruebas de matematicas', 'pruebas de lectura'])
+plt.scatter(rawData['reading score'], rawData['math score'], color = 'r')
+plt.legend(['pruebas de matematicas'])
+
+plt.ylabel('math score')
+plt.xlabel('reading score')
 
 
+reg = linear_model.LinearRegression()
+
+print(rawData['math score'])
+print(rawData[['math score']])
+
+reg.fit(rawData[['reading score']], rawData['math score'])
+
+mathScorePredict = reg.predict(rawData[['reading score']])
+
+#print(mathScorePredict)
+
+plt.plot(rawData['reading score'], mathScorePredict, color = 'b')
 
 
 
 #------------------------------------------------------------#
 
 
+#print(reg.coef_)
+#print(reg.intercept_)
+
+#print(reg.coef_ * 70 + reg.intercept_) y = mx + b donde m es el coeficiente, la x es la entrada y b es la intercepción o error
 
 plt.show()
